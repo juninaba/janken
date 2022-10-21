@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,13 +30,33 @@ class JankenPage extends StatefulWidget {
 
 class _JankenPageState extends State<JankenPage> {
   String myHand = '✊';
+  String computerHand = '✊';
 
   void selectHand(String selectHand) {
     myHand = selectHand;
     print(myHand);
+    generateComputerHand();
     setState(() {
 
     });
+  }
+
+  void generateComputerHand() {
+    final randomNumber = Random().nextInt(3);
+    computerHand = randomNumberToHand(randomNumber);
+  }
+
+  String randomNumberToHand(int randomNumber) {
+    switch (randomNumber) {
+      case 0:
+        return '✊';
+      case 1:
+        return '✌️';
+      case 2:
+        return '🖐';
+      default:
+        return '✊';
+    }
   }
 
   @override
@@ -47,6 +69,13 @@ class _JankenPageState extends State<JankenPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              computerHand,
+              style: TextStyle(
+                fontSize: 32,
+              ),
+            ),
+            SizedBox(height: 48),
             Text(
               myHand,
               style: TextStyle(
