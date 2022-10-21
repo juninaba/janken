@@ -1,9 +1,14 @@
 # janken
 
 A new Flutter project.
+
 https://zenn.dev/flutteruniv/books/flutter-textbook/viewer/make-janken-game
 
+![janken](https://user-images.githubusercontent.com/43479094/197216646-3b042a7c-f629-4c96-873e-4c38a1ba9cb9.gif)
+
+
 ## Getting Started
+
 
 This project is a starting point for a Flutter application.
 
