@@ -31,11 +31,13 @@ class JankenPage extends StatefulWidget {
 class _JankenPageState extends State<JankenPage> {
   String myHand = '✊';
   String computerHand = '✊';
+  String result = '引き分け';
 
   void selectHand(String selectHand) {
     myHand = selectHand;
     print(myHand);
     generateComputerHand();
+    judge();
     setState(() {
 
     });
@@ -59,6 +61,20 @@ class _JankenPageState extends State<JankenPage> {
     }
   }
 
+  void judge() {
+    if (myHand == computerHand) {
+      result = '引き分け';
+    } else if (myHand == '✊' && computerHand == '✌️') {
+      result = '勝ち';
+    } else if (myHand == '✌️' && computerHand == '🖐') {
+      result = '勝ち';
+    } else if (myHand == '🖐' && computerHand == '✊') {
+      result = '勝ち';
+    } else {
+      result = '負け';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +85,13 @@ class _JankenPageState extends State<JankenPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              result,
+              style: TextStyle(
+                fontSize:  32,
+              ),
+            ),
+            SizedBox(height: 48),
             Text(
               computerHand,
               style: TextStyle(
